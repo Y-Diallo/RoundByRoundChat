@@ -1,0 +1,93 @@
+{
+  "minecraft:recipes/misc/charcoal": {
+    "criteria": {
+      "has_log": "2022-11-23 17:29:21 -0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_planks": {
+    "criteria": {
+      "has_logs": "2022-11-23 17:29:21 -0800"
+    },
+    "done": true
+  },
+  "cgm:recipes/cgm/light_stock": {
+    "criteria": {
+      "has_gray_wool": "2022-11-23 17:27:23 -0800"
+    },
+    "done": true
+  },
+  "greekfantasy:recipes/building_blocks/limestone": {
+    "criteria": {
+      "has_ingredients": "2022-11-23 17:27:23 -0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_wood": {
+    "criteria": {
+      "has_log": "2022-11-23 17:29:21 -0800"
+    },
+    "done": true
+  },
+  "greekfantasy:recipes/building_blocks/ichor_infused_gearbox": {
+    "criteria": {
+      "has_ingredients": "2022-11-23 17:27:23 -0800"
+    },
+    "done": true
+  },
+  "cgm:recipes/cgm/workbench": {
+    "criteria": {
+      "has_concrete": "2022-11-23 17:27:23 -0800"
+    },
+    "done": true
+  },
+  "greekfantasy:recipes/building_blocks/marble": {
+    "criteria": {
+      "has_ingredients": "2022-11-23 17:27:23 -0800"
+    },
+    "done": true
+  },
+  "cgm:recipes/cgm/weighted_stock": {
+    "criteria": {
+      "has_gray_wool": "2022-11-23 17:27:23 -0800"
+    },
+    "done": true
+  },
+  "cgm:recipes/cgm/specialised_grip": {
+    "criteria": {
+      "has_gray_wool": "2022-11-23 17:27:23 -0800"
+    },
+    "done": true
+  },
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_something": "2022-11-23 17:29:10 -0800"
+    },
+    "done": true
+  },
+  "cgm:recipes/cgm/light_grip": {
+    "criteria": {
+      "has_gray_wool": "2022-11-23 17:27:23 -0800"
+    },
+    "done": true
+  },
+  "cgm:recipes/cgm/tactical_stock": {
+    "criteria": {
+      "has_gray_wool": "2022-11-23 17:27:23 -0800"
+    },
+    "done": true
+  },
+  "cgm:recipes/cgm/bazooka": {
+    "criteria": {
+      "has_redstone": "2022-11-23 17:27:23 -0800"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:forest": "2022-11-23 17:25:45 -0800"
+    },
+    "done": false
+  },
+  "DataVersion": 3120
+}
