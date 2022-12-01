@@ -6,10 +6,10 @@ const childProcess = require('child_process');
 var http = require('http');
 const directory = './moddedServer';
 
-// var minecraftServerProcess = childProcess.spawn('run.bat', [],
-//  {cwd: directory});//windows
-var minecraftServerProcess = childProcess.spawn('./run.sh', [],
- {cwd: directory});
+var minecraftServerProcess = childProcess.spawn('run.bat', [],
+ {cwd: directory});//windows
+// var minecraftServerProcess = childProcess.spawn('./run.sh', [],
+//  {cwd: directory});
 
 
 let ws = [];
@@ -771,7 +771,7 @@ function parseTags(tags) {
 
 function parseCommand(rawCommandComponent) {
     let parsedCommand = null;
-    commandParts = rawCommandComponent.split(' ');
+    let commandParts = rawCommandComponent.split(' ');
 
     switch (commandParts[0]) {
         case 'JOIN':
@@ -877,4 +877,4 @@ function parseParameters(rawParametersComponent, command) {
 
     return command;
 }
-module.exports = app;
+// module.exports = app;
