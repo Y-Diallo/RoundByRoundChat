@@ -1,0 +1,1 @@
+# move mobs to less stuck locations like to the players or a central atrium

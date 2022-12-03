@@ -1,0 +1,145 @@
+sky islands map - permanently day
+
+slowly spawn mobs for the round with a slight frontload
+wall gun
+unlock section with points (points based off of the mob kills)
+//boss give even points to all, mob to who killed it
+
+
+15 rounds of slowly harder mobs with a 16th round with bosses from every 3rd round
+
+leave override options for me
+ex.
+"override next round" (kill old zombie) // incase of mob stuck
+"override mob stuck" (move old zombie) // incase of mob stuck
+
+op/unop to make sure chat stays clear
+
+types of votes
+1-enhancing strength of players
+2-enhancing strength of players (temporary)
+3-make the round harder
+4-take away player strength (no bullets/take guns/ take melee etc)
+5-take away player strength (temporary)(weakness,lose hearts,)
+6-pekhui effects (skinny mobs, thicc mobs, tiny mobs)
+7-
+8-
+9-
+10-wildcard (gamble away our points, make players small or mobs small with pekhui
+bring out inner sigma ult, kill jargon (with explosion),
+ tp to a room that allows you to ban/delete messages of "I hardly")
+
+
+on the zoomies (every mob is double speed/strength)
+super spawn (spawn all the mobs for the round at once)
+
+
+
+
+
+round 1 
+- basic (zombies and stuff)
+- get chances at basic gear
+
+round 2
+-
+
+round 3
+-boss
+
+round 4 
+- basic (zombies and stuff)
+- get chances at basic gear
+
+round 5
+-
+
+round 6
+-boss
+
+round 7
+- basic (zombies and stuff)
+- get chances at basic gear
+
+round 8
+-
+
+round 9
+-boss
+
+round 10 
+- basic (zombies and stuff)
+- get chances at basic gear
+
+round 11
+-
+
+round 12
+-boss
+
+round 13 
+- basic (zombies and stuff)
+- get chances at basic gear
+
+round 14
+-
+
+round 15
+-boss
+
+
+
+
+flow goes as follows
+//also check bossmob number and make round over run once
+set roundmobs left and boss mobs to appropriate number for next round
+round start
+
+//make mobs invulerable to despawning and override mob spawning if needed
+spawn mobs slowly 
+when all mobs dead
+next round
+
+use loot tables to buy bullets or
+buy bullets with buttons
+
+main program just needs to do 4 things
+commands
+spawning mobs/setting amount of mobs
+round control/announcement
+
+when spawning boss mobs add one to pastCurrentBossMobs and current
+
+//for calculating score
+killDifferential - amount of mobs dead in one tick
+bossDifferential - amount of bosses dead in one tick
+pastCurrentBossMobs - amount of mobs in previous tick
+pastRoundKills - amount of bosses in previous tick
+Factor - Factor to multiply the num of kills by
+Score - score from killing mobs (individual to player)
+
+//for calculating state of round
+currentRoundMobsLeft - current number of mobs left in round
+roundEnd - signals 1 for outside of round 0 for in round
+TotalRoundMobs - total number of mobs for that round (set by node)
+currentTotalMobs - total mobs alive
+
+//both
+roundKill - number of kills of mobs in round (individual to player)
+currentMobs - current number of mobs alive
+currentBossMobs - current number of boss mobs alive
+
+//special
+mobStuck - trigger for tping mobs to players in case of lost or stuck mobs
+
+test deopped
+
+
+need to do
+-implement commands
+-build map/take one
+-implement shop
+-implement drops
+-implement pause/resume
+-adventure mode
+-play test

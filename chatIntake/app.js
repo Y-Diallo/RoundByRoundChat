@@ -1,17 +1,42 @@
 "use strict";
 // var logger = require('morgan');
-var password = require('./secret');
+let password = require('./secret');
 const commands = require('../chatintakeview/src/minecraftCommands');
 const childProcess = require('child_process');
-var http = require('http');
+const http = require('http');
 const directory = './moddedServer';
 
-var minecraftServerProcess = childProcess.spawn('run.bat', [],
+//1 boss mob per 15 regular mobs
+const roundData = require('./roundData.json');
+
+const minecraftServerProcess = childProcess.spawn('run.bat', [],
  {cwd: directory});//windows
-// var minecraftServerProcess = childProcess.spawn('./run.sh', [],
+// const minecraftServerProcess = childProcess.spawn('./run.sh', [],
 //  {cwd: directory});
+const oneTime = (command)=>{
+    minecraftServerProcess.stdin.write(command);
+}
 
-
+const spawnMobs = (roundNumber) => {
+    //add timeouts
+    let round = roundData.rounds[roundNumber];
+    oneTime(`/scoreboard players set Count TotalRoundMobs ${round.totalMobs}\n`);
+    for(let i = 0;i<round.mobCount;i++){
+        if(i%2 === 0){
+            oneTime(`/summon ${round.mobs[1]} 2 63 0 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+        }else{
+            oneTime(`/summon ${round.mobs[0]} 0 63 0 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+        }
+    }
+    for(let j = 0;j<round.bossMobCount;j++){
+        oneTime(`/scoreboard players add Count pastCurrentBossMobs 1\n`);
+        if(j%2 === 0){
+            oneTime(`/summon ${round.bossMobs[1]} 2 63 0 {PersistenceRequired:1b,Tags:["roundMob","bossMob"]}\n`);
+        }else{
+            oneTime(`/summon ${round.bossMobs[0]} 0 63 0 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+        }
+    }
+}
 let ws = [];
 let twsc;
 let channels = [];
@@ -26,41 +51,30 @@ let channels = [];
 //     updateCheck: false,
 //     updateTimeout: {},
 // }];
+let round = 0;
+//create round object in other file with compound pairs of mobs + freq and boss mobs
 let log = function(data) {
     let output = data.toString();
-    // if(output.includes("has the following entity data:")){
-    //     let pos = output.slice(73,output.length-3);
-    //     // console.log(pos);
-    //     pos = pos.split(",");
-    //     // console.log(pos);
-    //     let posX = pos[0].trim();
-    //     let posY = pos[1].trim();
-    //     let posZ = pos[2].trim();
-    //     // console.log("position [x,y,z]", [posX,posY,posZ]);
-    //     posX = Math.round(parseInt(posX.slice(0,posX.length-1)));
-    //     posY = Math.round(parseInt(posY.slice(0,posY.length-1)));
-    //     posZ = Math.round(parseInt(posZ.slice(0,posZ.length-1)));
-    //     //find out what channel it is from
-    //     console.log(output);
-    //     channels.forEach((channel)=>{
-    //         if(output.includes(channel.minecraftNames)){
-    //             console.log(`${channel.streamerNames} in output`);
-    //             streamerNames.push(channel.streamerNames);
-    //         }
-    //     });
-    //     console.log("streamerNames in minecraft logs: ", streamerNames);
-    //     if(ws.length>0){
-    //         ws.forEach((connection) => {
-    //             connection.sendUTF(JSON.stringify({
-    //                 type: "positionView",
-    //                 posX: posX,
-    //                 posY: posY,
-    //                 posZ: posZ,
-    //                 streamerName: streamerName,
-    //             }))
-    //         });
-    //     }
-    // }else 
+    if(output.includes("ROUND START")){
+        spawnMobs(round);
+        round++;
+    }else
+    if(output.includes("ROUND OVER")){
+        //once all mobs are killed this if statement will fire
+
+    }else  
+    if(output.includes("ROUND OVER AUTO")){
+        oneTime("/function roundgame:roundstart");
+    }else
+    if(output.includes("PAUSE")){
+        //pause is a trigger (pause mob spawn somehow)
+    }else
+    if(output.includes("RESUME")){
+        //resume is a trigger (unpause mob spawn somehow)
+    }else
+    // if(output.includes("ROUND START")){
+
+    // }else
     if(output.includes("Applied effect Night Vision to")){
         return;
     }else{
@@ -70,9 +84,7 @@ let log = function(data) {
 minecraftServerProcess.stdout.on('data', log);
 minecraftServerProcess.stderr.on('data', log);
 
-const oneTime = (command)=>{
-    minecraftServerProcess.stdin.write(command);
-}
+
 
 //voting variables
 const runCommands = (command, channel) => {

@@ -1,0 +1,1 @@
+tellraw @s ["","currentBossMobs: ",{"score":{"name":"Count","objective":"currentBossMobs"}}]

@@ -1,0 +1,30 @@
+{
+    "rounds": [
+        {
+            "mobs":[
+                "zombie",
+                "skeleton"
+            ],
+            "mobCount":30,
+            "bossMobs":[
+                "husk",
+                "drowned"
+            ],
+            "bossMobCount":2,
+            "totalMobs":32
+        },
+        {
+            "mobs":[
+                "zombie",
+                "skeleton"
+            ],
+            "mobCount":60,
+            "bossMobs":[
+                "husk",
+                "drowned"
+            ],
+            "bossMobCount":4,
+            "totalMobs":64
+        }
+    ]
+}
