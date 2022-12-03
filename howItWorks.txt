@@ -138,8 +138,10 @@ test deopped
 need to do
 -implement commands
 -build map/take one
--implement shop
+-implement shop w/ signs
 -implement drops
--implement pause/resume
+
+
 -adventure mode
 -play test
+-implement pause/resume
