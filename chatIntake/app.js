@@ -1,4 +1,3 @@
-
 // var logger = require('morgan');
 let password = require('./secret');
 const commands = require('../chatintakeview/src/minecraftCommands');
@@ -22,11 +21,11 @@ const spawnMobs = (roundNumber) => {
     let currentRound = roundData.rounds[roundNumber];
     oneTime(`/scoreboard players set Count TotalRoundMobs ${currentRound.totalMobs}\n`);
     for(let i = 0;i<currentRound.mobCount;i++){
-        let spawnPosition = roundData.coordinates[random.int(0,roundData.coordinates.length)];
+        let spawnPosition = roundData.coordinates[random.int(0,roundData.coordinates.length-1)];
         if(i%2 === 0){
-            oneTime(`/summon ${currentRound.mobs[1]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+            oneTime(`/summon ${currentRound.mobs[1]} 0 82 -5 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
         }else{
-            oneTime(`/summon ${currentRound.mobs[0]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+            oneTime(`/summon ${currentRound.mobs[0]} 0 82 -5 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
         }
     }
     for(let j = 0;j<currentRound.bossMobCount;j++){

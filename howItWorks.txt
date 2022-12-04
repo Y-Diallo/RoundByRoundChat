@@ -24,17 +24,17 @@ types of votes
 skip a round
 stunned! 10s
 iron armor
-mobs are stronk
-mobs get reach hacks
+//mobs are stronk
+//mobs get reach hacks
 2 hearts :D
 Friendly Fire (temp)
 double the bosses
 double the mobs
-thicc mobs
 gamble away our points,
 make players small (scale height and width)
 make players random proportions (scale height and width)
 mobs small with pekhui (scale height and width)
+thicc mobs
 bring out inner sigma ult (give every entity a upward boost)
 kill jargon (with explosion)
 "I hardly" (spawn 50 sheep named i hardly)
