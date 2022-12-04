@@ -9,10 +9,10 @@ const directory = './moddedServer';
 //1 boss mob per 15 regular mobs
 const roundData = require('./roundData.json');
 const random = require('random');
-const minecraftServerProcess = childProcess.spawn('run.bat', [],
- {cwd: directory});//windows
-// const minecraftServerProcess = childProcess.spawn('./run.sh', [],
-//  {cwd: directory});
+// const minecraftServerProcess = childProcess.spawn('run.bat', [],
+//  {cwd: directory});//windows
+const minecraftServerProcess = childProcess.spawn('./run.sh', [],
+ {cwd: directory});
 const oneTime = (command)=>{
     minecraftServerProcess.stdin.write(command);
 }
@@ -306,8 +306,8 @@ const weightedRandom = ()=>{
     let min = 0;
     let raritySelect = Math.floor(Math.random() * (10 - 1 + 1) + 1);
     let randomNum;
-    let highRare = 22;
-    let lowRare = 22;
+    let highRare = 24;
+    let lowRare = 24;
     if(raritySelect > 7){//super rare
         randomNum = random.int(max, lowRare);
     }else if(raritySelect > 4){//less rare
