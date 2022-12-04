@@ -21,7 +21,7 @@ const spawnMobs = (roundNumber) => {
     let currentRound = roundData.rounds[roundNumber];
     oneTime(`/scoreboard players set Count TotalRoundMobs ${currentRound.totalMobs}\n`);
     for(let i = 0;i<currentRound.mobCount;i++){
-        let spawnPosition = roundData.coordinates[random.int(0,roundData.coordinates.length-1)];
+        // let spawnPosition = roundData.coordinates[random.int(0,roundData.coordinates.length-1)];
         if(i%2 === 0){
             oneTime(`/summon ${currentRound.mobs[1]} 0 82 -5 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
         }else{
