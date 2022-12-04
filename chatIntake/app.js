@@ -1,4 +1,4 @@
-"use strict";
+
 // var logger = require('morgan');
 let password = require('./secret');
 const commands = require('../chatintakeview/src/minecraftCommands');
