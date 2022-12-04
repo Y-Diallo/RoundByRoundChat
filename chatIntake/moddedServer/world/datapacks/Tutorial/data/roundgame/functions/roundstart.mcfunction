@@ -3,4 +3,5 @@ scoreboard players set Count roundEnd 0
 scoreboard players set @a roundKill 0
 scoreboard players set @a pastRoundKills 0
 scoreboard players set @a pastCurrentBossMobs 0
+scoreboard players enable yman234 autoStart
 say ROUND START

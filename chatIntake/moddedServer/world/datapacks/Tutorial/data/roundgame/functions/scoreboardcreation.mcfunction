@@ -10,6 +10,7 @@ scoreboard objectives add TotalRoundMobs dummy
 scoreboard objectives add roundEnd dummy
 scoreboard objectives add currentBossMobs dummy
 scoreboard objectives add currentTotalMobs dummy
+scoreboard objectives add autoStart trigger
 scoreboard objectives add mobStuck trigger
 scoreboard objectives add roundKill minecraft.custom:minecraft.mob_kills
 scoreboard objectives add Deaths deathCount

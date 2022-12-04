@@ -18,16 +18,26 @@ op/unop to make sure chat stays clear
 types of votes
 1-enhancing strength of players
 2-enhancing strength of players (temporary)
-3-make the round harder
 4-take away player strength (no bullets/take guns/ take melee etc)
 5-take away player strength (temporary)(weakness,lose hearts,)
-6-pekhui effects (skinny mobs, thicc mobs, tiny mobs)
-7-
-8-
-9-
-10-wildcard (gamble away our points, make players small or mobs small with pekhui
-bring out inner sigma ult, kill jargon (with explosion),
- tp to a room that allows you to ban/delete messages of "I hardly")
+
+skip a round
+stunned! 10s
+iron armor
+mobs are stronk
+mobs get reach hacks
+2 hearts :D
+Friendly Fire (temp)
+double the bosses
+double the mobs
+thicc mobs
+gamble away our points,
+make players small (scale height and width)
+make players random proportions (scale height and width)
+mobs small with pekhui (scale height and width)
+bring out inner sigma ult (give every entity a upward boost)
+kill jargon (with explosion)
+"I hardly" (spawn 50 sheep named i hardly)
 
 
 on the zoomies (every mob is double speed/strength)
@@ -135,6 +145,10 @@ mobStuck - trigger for tping mobs to players in case of lost or stuck mobs
 test deopped
 
 
+
+make map thicker
+
+
 need to do
 -implement commands
 -build map/take one
@@ -144,4 +158,12 @@ need to do
 
 -adventure mode
 -play test
--implement pause/resume
+
+
+create start signs + death signs
+auto give saturation and nightvision
+
+welcome to burberry hills
+a suburb of the neolithic age
+
+candy button (speed)

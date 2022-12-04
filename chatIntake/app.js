@@ -8,7 +8,7 @@ const directory = './moddedServer';
 
 //1 boss mob per 15 regular mobs
 const roundData = require('./roundData.json');
-
+const random = require('random');
 const minecraftServerProcess = childProcess.spawn('run.bat', [],
  {cwd: directory});//windows
 // const minecraftServerProcess = childProcess.spawn('./run.sh', [],
@@ -19,21 +19,22 @@ const oneTime = (command)=>{
 
 const spawnMobs = (roundNumber) => {
     //add timeouts
-    let round = roundData.rounds[roundNumber];
-    oneTime(`/scoreboard players set Count TotalRoundMobs ${round.totalMobs}\n`);
-    for(let i = 0;i<round.mobCount;i++){
+    let currentRound = roundData.rounds[roundNumber];
+    oneTime(`/scoreboard players set Count TotalRoundMobs ${currentRound.totalMobs}\n`);
+    for(let i = 0;i<currentRound.mobCount;i++){
+        let spawnPosition = roundData.coordinates[random.int(0,roundData.coordinates.length)];
         if(i%2 === 0){
-            oneTime(`/summon ${round.mobs[1]} 2 63 0 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+            oneTime(`/summon ${currentRound.mobs[1]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
         }else{
-            oneTime(`/summon ${round.mobs[0]} 0 63 0 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+            oneTime(`/summon ${currentRound.mobs[0]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
         }
     }
-    for(let j = 0;j<round.bossMobCount;j++){
-        oneTime(`/scoreboard players add Count pastCurrentBossMobs 1\n`);
+    for(let j = 0;j<currentRound.bossMobCount;j++){
+        oneTime(`/scoreboard players add @a Score 150\n`);
         if(j%2 === 0){
-            oneTime(`/summon ${round.bossMobs[1]} 2 63 0 {PersistenceRequired:1b,Tags:["roundMob","bossMob"]}\n`);
+            oneTime(`/summon ${currentRound.bossMobs[1]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob","bossMob"]}\n`);
         }else{
-            oneTime(`/summon ${round.bossMobs[0]} 0 63 0 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+            oneTime(`/summon ${currentRound.bossMobs[0]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
         }
     }
 }
@@ -56,22 +57,26 @@ let round = 0;
 let log = function(data) {
     let output = data.toString();
     if(output.includes("ROUND START")){
-        spawnMobs(round);
-        round++;
+        if(round < roundData.rounds.length){
+            spawnMobs(round);
+            round++;
+        }else{
+            oneTime(`/title @a title {"text":"GAME FINISH!","bold":true,"italic":true,"underlined":true,"color":"dark_red"}\n`);
+        }
     }else
     if(output.includes("ROUND OVER")){
         //once all mobs are killed this if statement will fire
 
     }else  
     if(output.includes("ROUND OVER AUTO")){
-        oneTime("/function roundgame:roundstart");
+        oneTime("/function roundgame:roundstart\n");
     }else
-    if(output.includes("PAUSE")){
-        //pause is a trigger (pause mob spawn somehow)
-    }else
-    if(output.includes("RESUME")){
-        //resume is a trigger (unpause mob spawn somehow)
-    }else
+    // if(output.includes("PAUSE")){
+    //     //pause is a trigger (pause mob spawn somehow)
+    // }else
+    // if(output.includes("RESUME")){
+    //     //resume is a trigger (unpause mob spawn somehow)
+    // }else
     // if(output.includes("ROUND START")){
 
     // }else
@@ -129,6 +134,25 @@ const runCommands = (command, channel) => {
             }else if(command.name === "Pokey Bow"){
                 oneTime(command.command);
                 oneTime(`/give ${minecraftName} arrow 64\n`);
+            }else if(command.name === "DOUBLE THE MOBS"){
+                let currentRound =roundData.rounds[round];
+                oneTime(`/scoreboard players add Count TotalRoundMobs ${currentRound.mobCount}\n`);
+                for(let j = 0;j<currentRound.mobCount;j++){
+                    oneTime(`/scoreboard players add @a Score 150\n`);
+                    oneTime(`/summon ${currentRound.mobs[0]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+                }
+            }else if(command.name === "DOUBLE THE BOSSES"){
+                let currentRound =roundData.rounds[round];
+                oneTime(`/scoreboard players add Count TotalRoundMobs ${currentRound.bossMobCount}\n`);
+                for(let j = 0;j<currentRound.bossMobCount;j++){
+                    oneTime(`/scoreboard players add @a Score 150\n`);
+                    oneTime(`/summon ${currentRound.bossMobs[1]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob","bossMob"]}\n`);
+                }
+            }else if(command.name === "Friendly Fire (temp)"){
+                oneTime("/team modify justice friendlyFire false");
+                setTimeout(()=>{
+                    oneTime("/team modify justice friendlyFire true");
+                },1000*60*2);
             }else {
                 console.log("unexpected command: ", command);
             }
@@ -274,7 +298,7 @@ function originIsAllowed(origin) {
     // put logic here to detect whether the specified origin is allowed.
     return true;
 }
-const random = require('random');
+
 //function that servers a weighted random
 const weightedRandom = ()=>{
     //randomize commands
@@ -282,8 +306,8 @@ const weightedRandom = ()=>{
     let min = 0;
     let raritySelect = Math.floor(Math.random() * (10 - 1 + 1) + 1);
     let randomNum;
-    let highRare = 20;
-    let lowRare = 8;
+    let highRare = 22;
+    let lowRare = 22;
     if(raritySelect > 7){//super rare
         randomNum = random.int(max, lowRare);
     }else if(raritySelect > 4){//less rare

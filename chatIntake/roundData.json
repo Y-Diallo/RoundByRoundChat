@@ -1,4 +1,11 @@
 {
+    "coordinates":[
+        {"x":-6,"z":-25},
+        {"x":17,"z":-22},
+        {"x":0,"z":-5},
+        {"x":-19,"z":-3},
+        {"x":-3,"z":17}
+    ],
     "rounds": [
         {
             "mobs":[
@@ -7,24 +14,128 @@
             ],
             "mobCount":30,
             "bossMobs":[
-                "husk",
-                "drowned"
+                "creeper",
+                "minecraft:wither_skeleton"
             ],
             "bossMobCount":2,
             "totalMobs":32
         },
         {
             "mobs":[
-                "zombie",
-                "skeleton"
-            ],
-            "mobCount":60,
-            "bossMobs":[
                 "husk",
                 "drowned"
             ],
-            "bossMobCount":4,
-            "totalMobs":64
+            "mobCount":60,
+            "bossMobs":[
+                "greekfantasy:baby_spider",
+                "greekfantasy:mad_cow"
+            ],
+            "bossMobCount":8,
+            "totalMobs":68
+        },
+        {
+            "mobs":[
+                "greekfantasy:baby_spider",
+                "greekfantasy:mad_cow"
+            ],
+            "mobCount":60,
+            "bossMobs":[
+                "Vindicator",
+                "drowned"
+            ],
+            "bossMobCount":8,
+            "totalMobs":68
+        },
+        {
+            "mobs":[
+                "Vindicator",
+                "drowned"
+            ],
+            "mobCount":60,
+            "bossMobs":[
+                "witch",
+                "evoker"
+            ],
+            "bossMobCount":8,
+            "totalMobs":68
+        },
+        {
+            "mobs":[
+                "zombie",
+                "endermite"
+            ],
+            "mobCount":60,
+            "bossMobs":[
+                "evoker",
+                "drowned"
+            ],
+            "bossMobCount":8,
+            "totalMobs":68
+        },
+        {
+            "mobs":[
+                "stray",
+                "shade"
+            ],
+            "mobCount":60,
+            "bossMobs":[
+                "ghast",
+                "drowned"
+            ],
+            "bossMobCount":8,
+            "totalMobs":68
+        },
+        {
+            "mobs":[
+                "magma_cube",
+                "husk"
+            ],
+            "mobCount":60,
+            "bossMobs":[
+                "minecraft:zoglin",
+                "greekfantasy:giant_boar"
+            ],
+            "bossMobCount":8,
+            "totalMobs":68
+        },
+        {
+            "mobs":[
+                "minecraft:zoglin",
+                "drowned"
+            ],
+            "mobCount":60,
+            "bossMobs":[
+                "greekfantasy:nemean_lion",
+                "drowned"
+            ],
+            "bossMobCount":8,
+            "totalMobs":68
+        },
+        {
+            "mobs":[
+                "zombie",
+                "greekfantasy:cyprian"
+            ],
+            "mobCount":60,
+            "bossMobs":[
+                "greekfantasy:python",
+                "drowned"
+            ],
+            "bossMobCount":8,
+            "totalMobs":68
+        },
+        {
+            "mobs":[
+                "zombie",
+                "greekfantasy:cerastes"
+            ],
+            "mobCount":60,
+            "bossMobs":[
+                "greekfantasy:cyclops",
+                "drowned"
+            ],
+            "bossMobCount":8,
+            "totalMobs":68
         }
     ]
 }

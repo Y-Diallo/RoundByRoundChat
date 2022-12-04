@@ -1,0 +1,1 @@
+execute as jargoncommander run summon creeper ~ ~ ~ {powered:1}

@@ -23,4 +23,4 @@ execute if score Count currentRoundMobsLeft matches ..0 run function roundgame:r
 team join justice @a[team=]
 
 scoreboard players operation Count pastCurrentBossMobs = Count currentBossMobs
-
+effect give @a minecraft:night_vision 10 1
