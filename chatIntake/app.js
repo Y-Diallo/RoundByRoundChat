@@ -31,9 +31,9 @@ const spawnMobs = (roundNumber) => {
     for(let j = 0;j<currentRound.bossMobCount;j++){
         oneTime(`/scoreboard players add @a Score 150\n`);
         if(j%2 === 0){
-            oneTime(`/summon ${currentRound.bossMobs[1]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob","bossMob"]}\n`);
+            oneTime(`/summon ${currentRound.bossMobs[1]} 0 82 -5 {PersistenceRequired:1b,Tags:["roundMob","bossMob"]}\n`);
         }else{
-            oneTime(`/summon ${currentRound.bossMobs[0]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+            oneTime(`/summon ${currentRound.bossMobs[0]} 0 82 -5 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
         }
     }
 }
@@ -134,18 +134,18 @@ const runCommands = (command, channel) => {
                 oneTime(command.command);
                 oneTime(`/give ${minecraftName} arrow 64\n`);
             }else if(command.name === "DOUBLE THE MOBS"){
-                let currentRound =roundData.rounds[round];
+                let currentRound = roundData.rounds[round];
                 oneTime(`/scoreboard players add Count TotalRoundMobs ${currentRound.mobCount}\n`);
                 for(let j = 0;j<currentRound.mobCount;j++){
                     oneTime(`/scoreboard players add @a Score 150\n`);
-                    oneTime(`/summon ${currentRound.mobs[0]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
+                    oneTime(`/summon ${currentRound.mobs[0]} 0 82 -5 {PersistenceRequired:1b,Tags:["roundMob"]}\n`);
                 }
             }else if(command.name === "DOUBLE THE BOSSES"){
                 let currentRound =roundData.rounds[round];
                 oneTime(`/scoreboard players add Count TotalRoundMobs ${currentRound.bossMobCount}\n`);
                 for(let j = 0;j<currentRound.bossMobCount;j++){
                     oneTime(`/scoreboard players add @a Score 150\n`);
-                    oneTime(`/summon ${currentRound.bossMobs[1]} ${spawnPosition.x} 82 ${spawnPosition.z} {PersistenceRequired:1b,Tags:["roundMob","bossMob"]}\n`);
+                    oneTime(`/summon ${currentRound.bossMobs[1]} 0 82 -5 {PersistenceRequired:1b,Tags:["roundMob","bossMob"]}\n`);
                 }
             }else if(command.name === "Friendly Fire (temp)"){
                 oneTime("/team modify justice friendlyFire false");
